@@ -1,0 +1,7 @@
+{
+  "name": "JezLex-IOT",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
