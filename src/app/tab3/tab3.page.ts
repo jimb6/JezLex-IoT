@@ -4,6 +4,8 @@ import {NavController, ToastController} from "@ionic/angular";
 import {Dsm501aDataService} from "../services/dsm501a-data.service";
 import {Mq2dataService} from "../services/mq2data.service";
 import {Mq135DataService} from "../services/mq135-data.service";
+import {AppComponent} from "../app.component";
+import {ThemeService} from "../services/theme.service";
 
 @Component({
   selector: 'app-tab3',
@@ -19,6 +21,7 @@ export class Tab3Page {
   chart : any;
 
   constructor(
+      private themeService: ThemeService,
       public navCtrl: NavController,
       private dsm501aDataService: Dsm501aDataService,
       private mq2dataService: Mq2dataService,
@@ -72,4 +75,10 @@ export class Tab3Page {
       }
     });
   }
+
+  toggleDarkMode(){
+    this.themeService.toggleAppTheme();
+  }
+
+
 }

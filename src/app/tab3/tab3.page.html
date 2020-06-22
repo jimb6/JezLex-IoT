@@ -5,7 +5,6 @@
         </ion-title>
     </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
     <ion-header collapse="condense">
         <ion-toolbar>
@@ -30,6 +29,30 @@
                     </ion-card>
                 </ion-col>
             </ion-row>
+
+            <ion-row>
+                <ion-col>
+                    <ion-card>
+                        <ion-item>
+                            <ion-icon name="settings-outline" slot="start"></ion-icon>
+                            <ion-label>Additional Config</ion-label>
+                        </ion-item>
+
+                        <ion-card-content>
+                            <ion-list>
+                                <ion-item>
+                                    <ion-icon slot="start" name="moon-outline"></ion-icon>
+                                    <ion-label>
+                                        Dark Mode
+                                    </ion-label>
+                                    <ion-button (click)="toggleDarkMode() ">Switch Mode</ion-button>
+                                </ion-item>
+                            </ion-list>
+                        </ion-card-content>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+
             <ion-row>
                 <ion-col>
                     <ion-card>
@@ -73,9 +96,12 @@
                     </ion-card-subtitle>
                 </ion-card-header>
                 <ion-card-content>
-                    <div style="display: block"><canvas id="all-chart"></canvas></div>
+                    <div style="display: block">
+                        <canvas id="all-chart"></canvas>
+                    </div>
                 </ion-card-content>
             </ion-card>
         </ion-col>
     </ion-row>
 </ion-content>
+
