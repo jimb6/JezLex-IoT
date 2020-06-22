@@ -13,79 +13,91 @@
         </ion-toolbar>
     </ion-header>
 
-    <ion-row>
-        <ion-col size="4">
-            <ion-card>
-                <ion-card-header>
-                    <ion-card-title>Hazardous Gas Sensor - MQ-135</ion-card-title>
-                    <ion-card-subtitle>MQ-135 can detect a wide range of gases, including NH3, NOx, alcohol, benzene,
-                        smoke and CO2.
-                    </ion-card-subtitle>
-                </ion-card-header>
-                <ion-card-content>
-                    <div style="display: block"><canvas id="mq135-chart"></canvas></div>
-                </ion-card-content>
-            </ion-card>
-        </ion-col>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="6" size-md class="ion-align-items-start">
+                <div >
+                    <ion-card>
+                        <ion-card-header>
+                            <ion-card-title>Hazardous Gas Sensor - MQ-135</ion-card-title>
+                            <ion-card-subtitle>MQ-135 can detect a wide range of gases, including NH3, NOx, alcohol, benzene,
+                                smoke and CO2.
+                            </ion-card-subtitle>
+                        </ion-card-header>
+                        <ion-card-content>
+                            <div style="display: block"><canvas id="mq135-chart"></canvas></div>
+                        </ion-card-content>
+                    </ion-card>
+                </div>
+            </ion-col>
+            <ion-col size="6" size-md class="ion-align-self-center">
+                <div>
+                    <ion-card>
+                        <ion-card-header>
+                            <ion-card-title>DSM501A - Dust Sensor</ion-card-title>
+                            <ion-card-subtitle>DSM501A is low cost, compact size for a particle density sensor.
+                                * Quantitative particle density measurement with the principle of particle counter
+                            </ion-card-subtitle>
+                        </ion-card-header>
+                        <ion-card-content>
+                            <!--          <canvas #doughnutCanvas></canvas>-->
+                            <div style="display: block"><canvas id="dsm-chart"></canvas></div>
+                        </ion-card-content>
+                    </ion-card>
+                </div>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="12" size-md class="ion-align-self-end">
+                <div>
+                    <ion-card>
+                        <ion-card-header>
+                            <ion-card-title>DHT11 Hunidity Sensor</ion-card-title>
+                            <ion-card-subtitle>The DHT11 is a basic, ultra low-cost digital temperature and humidity sensor.
+                            </ion-card-subtitle>
+                        </ion-card-header>
 
+                        <ion-card-content>
+                            <ion-list>
+                                <ion-item>
+                                    <ion-label>Temperature Sensor</ion-label>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label id="celsius">{{celsius}}</ion-label>
+                                    <ion-label id="fahrenheit">{{fahrenheit}}</ion-label>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label id="heat-index">{{heat_index}}</ion-label>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label id="humidity">{{humidity}}</ion-label>
+                                </ion-item>
+                            </ion-list>
+                        </ion-card-content>
+                    </ion-card>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
-        <ion-col size="4">
-            <ion-card>
-                <ion-card-header>
-                    <ion-card-title>DSM501A - Dust Sensor</ion-card-title>
-                    <ion-card-subtitle>DSM501A is low cost, compact size for a particle density sensor.
-                        * Quantitative particle density measurement with the principle of particle counter
-                    </ion-card-subtitle>
-                </ion-card-header>
-                <ion-card-content>
-                    <!--          <canvas #doughnutCanvas></canvas>-->
-                    <div style="display: block"><canvas id="dsm-chart"></canvas></div>
-                </ion-card-content>
-            </ion-card>
-        </ion-col>
-        <ion-col size="4">
-            <ion-card>
-                <ion-card-header>
-                    <ion-card-title>DHT11 Hunidity Sensor</ion-card-title>
-                    <ion-card-subtitle>The DHT11 is a basic, ultra low-cost digital temperature and humidity sensor.
-                    </ion-card-subtitle>
-                </ion-card-header>
-
-                <ion-card-content>
-                    <ion-list>
-                        <ion-item>
-                            <ion-label>Temperature Sensor</ion-label>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label>Celsius: </ion-label>
-                            <ion-label>Fahrenheit: </ion-label>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label>Heat index Sensor: </ion-label>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label>Humidity Sensor: </ion-label>
-                        </ion-item>
-                    </ion-list>
-                </ion-card-content>
-            </ion-card>
-        </ion-col>
-    </ion-row>
-
-    <ion-row>
-        <ion-col size="12">
-            <ion-card>
-                <ion-card-header>
-                    <ion-card-title>Hazardous Gas Sensor - MQ-2</ion-card-title>
-                    <ion-card-subtitle>
-                    </ion-card-subtitle>
-                </ion-card-header>
-                <ion-card-content>
-                    <div style="display: block"><canvas id="mq2-chart"></canvas></div>
-                </ion-card-content>
-            </ion-card>
-        </ion-col>
-    </ion-row>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12" size-md>
+                <div>
+                    <ion-card>
+                        <ion-card-header>
+                            <ion-card-title>Hazardous Gas Sensor - MQ-2</ion-card-title>
+                            <ion-card-subtitle>
+                            </ion-card-subtitle>
+                        </ion-card-header>
+                        <ion-card-content>
+                            <div style="display: block"><canvas id="mq2-chart"></canvas></div>
+                        </ion-card-content>
+                    </ion-card>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
 
 </ion-content>

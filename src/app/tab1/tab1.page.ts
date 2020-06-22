@@ -20,11 +20,11 @@ export class Tab1Page{
     dsmChart: any;
 
 
-    @ViewChild('mq2Graph') lineCanvas;
-    @ViewChild('celsius') celsius;
-    @ViewChild('fahrenheit') fahrenheit;
-    @ViewChild('heat_index') heat_index;
-    @ViewChild('humidity') humidity;
+    lineCanvas;
+    celsius = "Celsius: ";
+    fahrenheit = "Fahrenheit: ";
+    heat_index =  "Heat Index: ";
+    humidity = "Humidity";
 
     dsmTasks: Observable<any[]>;
     mq2Tasks: Observable<any[]>;
@@ -44,6 +44,7 @@ export class Tab1Page{
     ionViewDidEnter(){
         this.dsmTasks = this.dsm501aDataService.getData().valueChanges();
         this.dsmTasks.subscribe(actions=> {
+            this.removeData(this.dsmChart);
             actions.forEach(action => {
                 console.log(action.Status);
                 console.log(action.datetime);
@@ -54,6 +55,7 @@ export class Tab1Page{
 
         this.mq2Tasks = this.mq2dataService.getData().valueChanges();
         this.mq2Tasks.subscribe(actions=> {
+            this.removeData(this.mq2Chart);
             actions.forEach(action => {
                 console.log(action.Status);
                 console.log(action.datetime);
@@ -64,6 +66,7 @@ export class Tab1Page{
 
         this.mq135Tasks = this.mq135DataService.getData().valueChanges();
         this.mq135Tasks.subscribe(actions=> {
+            this.removeData(this.mq135Chart);
             actions.forEach(action => {
                 console.log(action.Status);
                 console.log(action.datetime);
@@ -79,7 +82,8 @@ export class Tab1Page{
                 console.log(action.fahrenheit);
                 console.log(action.heat_index);
                 console.log(action.humidity);
-
+                this.setHumidityData(action);
+                console.log(action);
             });
         });
 
@@ -123,6 +127,28 @@ export class Tab1Page{
                     ],
                     data: [],
                     borderWidth: 1
+                }, {
+                    label: 'MQ135 Sensor Data',
+                    backgroundColor: [
+                        'rgba(22,17,236,0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgb(7,57,127)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    data: [],
+                    type: 'line',
+                    // this dataset is drawn on top
+                    order: 2
                 }]
             }
         });
@@ -185,20 +211,53 @@ export class Tab1Page{
                     ],
                     data: [],
                     borderWidth: 1
+                }, {
+                    label: 'Line Dataset',
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgb(7,57,127)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    data: [],
+                    type: 'line',
+                    // this dataset is drawn on top
+                    order: 2
                 }]
             }
         });
 
     }
 
-    setHumidityData(){
-        var ctx = (<any>document.getElementById('mq2-chart')).set
+    setHumidityData(data){
+        this.celsius = "Celsius: °C" + data.celsius;
+        this.fahrenheit = "Fahrenheit: °F" + data.fahrenheit;
+        this.heat_index = "Heat Index: HI" + data.heat_index;
+        this.humidity = "Humidity: Level " + data.humidity;
     }
 
     addData(chart, label, data) {
         chart.data.labels.push(label);
         chart.data.datasets.forEach((dataset) => {
             dataset.data.push(data);
+        });
+        chart.update();
+    }
+
+    removeData(chart) {
+        chart.data.labels.pop();
+        chart.data.datasets.forEach((dataset) => {
+            dataset.data.pop();
         });
         chart.update();
     }
